@@ -18,4 +18,11 @@ class BaseViewTest(APITestCase):
     def setUp(self):
         self.create_project("e-commerce","website to sell vehicles", "Monday", duration="two months")
 
+class GetAllProjectsTest(BaseViewTest):
+
+    def test_get_all_projects(self):
+        response = self.client.get(
+            reverse("songs-all", kwargs={"version": "v1"})
+        )
     
+    expected = Projects.objects.all()
