@@ -12,6 +12,7 @@ jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
 class ListProjectsView(generics.ListAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Projects.objects.all()
     serializer_class =  ProjectsSerializer
 
