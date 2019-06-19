@@ -15,7 +15,7 @@ class BaseViewTest(APITestCase):
         if name != "" and description != "" and start_date !="" and duration !="":
             Projects.objects.create(name=name, description=description, start_date=start_date, duration=duration)
 
-    def login_a_user(self, username="", password="")
+    def login_a_user(self, username="", password=""):
         url = reverse(
             "auth-login",
             kwargs={
@@ -25,7 +25,7 @@ class BaseViewTest(APITestCase):
         return self.client.post(
             url,
             data=json.dumps({
-                "username": username
+                "username": username,
                 "password": password
             }),
             content_type="application/json"
@@ -44,6 +44,7 @@ class BaseViewTest(APITestCase):
 class GetAllProjectsTest(BaseViewTest):
 
     def test_get_all_projects(self):
+        self.login_client('test_user', 'testing')
         response = self.client.get(
             reverse("songs-all", kwargs={"version": "v1"})
         )
