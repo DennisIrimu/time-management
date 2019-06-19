@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
 from .models import Projects
-from .serializers import SongsSerializer
+from .serializers import ProjectsSerializer
 
 # Create your tests here.
 
