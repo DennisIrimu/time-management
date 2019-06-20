@@ -4,9 +4,25 @@
 
 {% block content%}
 <h2>Login</h2>
-<form method="post">
+<form id = "login_form" method="post">
     {%  csrf_token %}
     {{form.as_p}}
     <button type="submit">Login</button>
 </form>
     {% endblock %}
+
+{% block javascript %}
+    <script>
+
+    $(document).on('submit','#login_form',function(e){
+        e.preventDefault():
+        $.ajax({
+            type:'POST',
+            url:'',
+            success:function(){
+                alert("Ajax succesful");
+            }
+        });
+    });
+    </script>
+{% endblock %}
