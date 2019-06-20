@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from rest_framework import generics
 from .models import Projects
 from .serializers import ProjectsSerializer,TokenSerializer,UserSerializer,RegisterSerializer
@@ -14,8 +14,9 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.http import JsonResponse
 
+from django.views.decorators.csrf import csrf_protect
 # Create your views here.
-
+@csrf_protect
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -33,6 +34,7 @@ def signup(request):
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
+@csrf_protect
 def validate_username(request):
     username = request.GET.get('username', None)
     data = {
