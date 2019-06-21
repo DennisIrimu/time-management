@@ -15,6 +15,7 @@ from django.views import generic
 from django.http import JsonResponse
 
 from django.views.decorators.csrf import csrf_protect
+from .permissions import Manager
 # Create your views here.
 """
 @csrf_protect
@@ -44,7 +45,7 @@ def validate_username(request):
     return JsonResponse(data)
     """
 class ListProjectsView(generics.ListAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     queryset = Projects.objects.all()
     serializer_class =  ProjectsSerializer
 
