@@ -32,9 +32,10 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
-
+"""
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+"""
 
 @csrf_protect
 def validate_username(request):
