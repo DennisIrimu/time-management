@@ -48,6 +48,9 @@ class ListProjectsView(generics.ListAPIView):
     queryset = Projects.objects.all()
     serializer_class =  ProjectsSerializer
 
+    def create_projects(self, serializer):
+        serializer.save()
+
 class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Projects.objects.all()
     serializer_class = ProjectsSerializer
