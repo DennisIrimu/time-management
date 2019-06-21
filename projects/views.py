@@ -104,13 +104,14 @@ class RegisterUsers(generics.CreateAPIView):
         )
         return Response(status=status.HTTP_201_CREATED)
 class UserView(generics.ListAPIView):
-    """View to list the user queryset."""
+    permission_classes = (permissions.IsAuthenticated,Manager )
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class UserDetailsView(generics.RetrieveAPIView):
-    """View to retrieve a user instance."""
+
+    permission_classes = (permissions.IsAuthenticated,Manager )
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
