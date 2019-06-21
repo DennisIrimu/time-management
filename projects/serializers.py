@@ -13,9 +13,10 @@ class TokenSerializer(serializers.Serializer):
     token = serializers.CharField(max_length=255)
 
 class UserSerializer(serializers.ModelSerializer):
+    projects = serializers.PrimaryKeyRelatedField(many=True, queryset=Projects.objects.all())
     class Meta:
         model=User
-        fields=('username','password')
+        fields=('username','password','projects')
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:

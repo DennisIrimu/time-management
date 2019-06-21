@@ -3,6 +3,6 @@ from .models import Projects
 
 class Manager(BasePermission):
     def has_object_permission(self, request, view, obj):
-        is isinstance(obj, Projects):
-            return obj.owner = request.user
+        if isinstance(obj, Projects):
+            return obj.owner == request.user
         return obj.owner == request.user
