@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class ProjectsSerializer(serializers.ModelSerializer):
-    owner = serializer.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Projects
         fields = ("name", "description" ,"start_date", "duration")
