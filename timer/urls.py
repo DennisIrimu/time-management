@@ -24,5 +24,5 @@ urlpatterns = [
     #path('api-token-auth/', obtain_jwt_token, name='create-token'),
    # re_path('api/(?P<version>(v1|v2))/', include('projects.urls')),
     #path('projects/', include('django.contrib.auth.urls')),
-    #path('', TemplateView.as_view(template_name='home.html'), name='home')
+    path('', TemplateView.as_view(template_name='home.html'), name='home')
 ]
