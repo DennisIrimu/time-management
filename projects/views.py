@@ -103,3 +103,14 @@ class RegisterUsers(generics.CreateAPIView):
             username=username, password=password, email=email
         )
         return Response(status=status.HTTP_201_CREATED)
+class UserView(generics.ListAPIView):
+    """View to list the user queryset."""
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetailsView(generics.RetrieveAPIView):
+    """View to retrieve a user instance."""
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
