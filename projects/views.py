@@ -16,6 +16,7 @@ from django.http import JsonResponse
 
 from django.views.decorators.csrf import csrf_protect
 # Create your views here.
+"""
 @csrf_protect
 def signup(request):
     if request.method == 'POST':
@@ -41,10 +42,15 @@ def validate_username(request):
         'is_taken': User.objects.filter(username__iexact=username).exists()
     }
     return JsonResponse(data)
+    """
 class ListProjectsView(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Projects.objects.all()
     serializer_class =  ProjectsSerializer
+
+class DetailsView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Projects.objects.all()
+    serializer_class = ProjectsSerializer
 
 class LoginView(generics.CreateAPIView):
     """
